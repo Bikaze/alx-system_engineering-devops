@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script is displaying the clock for 12hours and 59minutes
+i=0
+hour=-1
+nbr=0
+while ((i < 13*60)); do
+	nbr=$((i%60))
+
+	if ((nbr == 0)); then
+		hour=$((hour+1))
+		echo "Hour: $hour"
+	else
+		echo "$nbr"
+	fi
+	i=$((i+1))
+done
