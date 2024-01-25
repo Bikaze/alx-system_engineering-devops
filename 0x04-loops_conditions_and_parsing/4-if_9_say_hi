@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
+# This script is displaying "Hi" on the 9th iteration and "Best School" other 10 times
 i=0
 while ((i <= 10));
 	do
