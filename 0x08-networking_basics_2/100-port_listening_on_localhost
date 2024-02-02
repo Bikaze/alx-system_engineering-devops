@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script listens on port 98 on localhost
+
+echo -e "Hello world\ntest" | nc -l 98
