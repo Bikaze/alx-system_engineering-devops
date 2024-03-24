@@ -1,8 +1,13 @@
-# puppet script to create a ~/.ssh/config file
+# puppet script to make a change to our ssh config file
 
-file { '/home/bkz/.ssh/config':
-    ensure  => file,
-    content => 'Host 54.172.242.22
-                IdentityFile ~/.ssh/school
-                PasswordAuthentication no'
+file_line { 'private key':
+    ensure => 'present',
+    path   => '/etc/ssh/ssh_config',
+    line   => 'IdentityFile ~/.ssh/school',
+}
+
+file_line { 'no PasswordAuth':
+    ensure => 'present',
+    line   => 'PasswordAuthentication no',
+    path   => '/etc/ssh/ssh_config',
 }
