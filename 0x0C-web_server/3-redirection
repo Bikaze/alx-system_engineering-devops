@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # installing nginx
-REDIR="server_name _;\n\nlocation /redirect_me {\n\treturn 301 
-https://www.youtube.com/watch?v=QH2-TGUlwu4;\n"
+REDIR="server_name _;\n\nlocation /redirect_me {\n\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n"
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
