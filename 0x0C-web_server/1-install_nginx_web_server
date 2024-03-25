@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
-# installing nginx
 
+# Installing Nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
-sudo chown -R $USER:$USER /var/www/html/index.nginx-debian.html
+
+# Configuring Nginx to redirect /redirect_me
+sudo sed -i '/location \/ {/a \    location \/redirect_me { \n\        return 301 https:\/\/www.example.com\/; \n    }' /etc/nginx/sites-available/default
+
+# Creating a simple index.html file
+sudo chown -R $USER:$USER /var/www/html/
 sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+# Enabling the new Nginx configuration
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo ufw allow "Nginx HTTP"
 sudo service nginx restart
