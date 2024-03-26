@@ -19,6 +19,11 @@ server {
         try_files \$uri \$uri/ =404;
     }
 
+    error_page 404 /404.html;
+    location /404.html {
+        internal;
+    }
+
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4/;
     }
@@ -26,8 +31,8 @@ server {
 EOF'
 
 # Creating a simple index.html file
-sudo chown -R $USER:$USER /var/www/html/
-sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo chown -R "$USER":"$USER" /var/www/html/
+sudo tee /var/www/html/index.nginx-debian.html <<< "Hello World!"
 
 # Enabling the new Nginx configuration
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
