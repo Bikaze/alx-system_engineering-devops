@@ -26,8 +26,8 @@ server {
 EOF'
 
 # Creating a simple index.html file
-sudo chown -R "$USER":"$USER" /var/www/html/
-sudo tee /var/www/html/index.nginx-debian.html <<< "Hello World!"
+sudo chown -R $USER:$USER /var/www/html/
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 # Enabling the new Nginx configuration
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
