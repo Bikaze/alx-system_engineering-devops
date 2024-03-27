@@ -33,7 +33,7 @@ EOF'
 # Creating a simple index.html file
 sudo chown -R "$USER":"$USER" /var/www/html/
 sudo tee /var/www/html/index.nginx-debian.html <<< "Hello World!"
-sudo tee /var/www/html/404.html <<< "Ceci n'est pas une page"
+echo -e "Ceci n'est pas une page\n" > /var/www/html/404.html
 # Enabling the new Nginx configuration
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo ufw allow "Nginx HTTP"
