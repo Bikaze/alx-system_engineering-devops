@@ -1,5 +1,9 @@
 ## 0x13. Firewall
 
+`DevOps`
+`SysAdmin`
+`Security`
+
 **Background Context**
 
 <h2>Your servers without a firewall...</h2>
