@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Establishing 'nginx' to be the user running nginx instead of www-data
-sudo sed -i "s/user www-data/user nginx/" /etc/nginx/nginx.conf
-sudo sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 pkill apache2
 sudo service nginx start
