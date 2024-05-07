@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This is a function that gets nbr of subscribers on a given Subreddit"""
+"""This is a function that gets the number of subscribers on a given
+Subreddit"""
 import requests
 
 
@@ -7,12 +8,15 @@ def number_of_subscribers(subreddit):
     """returns the number of subscribers"""
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+        "User-Agent": "redditdev scraper by u/bikaze"
     }
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 404:
+    try:
+        response = requests.get(url, headers=headers, allow_redirects=False)
+        response.raise_for_status()  # Raise an exception
+        results = response.json().get("data")
+        if not results:
+            return 0
+        return results.get("subscribers")
+    except requests.exceptions.RequestException as e:
+        # Handle various exceptions that can occur during the request
         return 0
-    results = response.json().get("data")
-    if not results:
-        return 0
-    return results.get("subscribers")
