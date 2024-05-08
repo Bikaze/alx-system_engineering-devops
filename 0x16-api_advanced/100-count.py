@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""This function counts occurrences of specified words in hot posts of a given Reddit subreddit."""
+"""This function counts occurrences of specified words in hot posts of
+a given Reddit subreddit."""
 import requests
 
+
 def count_words(subreddit, word_list, instances={}, after="", count=0):
-    """Analyzes post titles in a subreddit for specified words and counts their occurrences.
+    """Analyzes post titles in a subreddit for specified words and counts
+    their occurrences.
 
     Args:
         subreddit (str): The subreddit to search.
@@ -21,8 +24,9 @@ def count_words(subreddit, word_list, instances={}, after="", count=0):
         "count": count,
         "limit": 100
     }
-    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
-    
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+
     try:
         results = response.json()
         if response.status_code == 404:
@@ -34,7 +38,7 @@ def count_words(subreddit, word_list, instances={}, after="", count=0):
     results = results.get("data")
     after = results.get("after")
     count += results.get("dist")
-    
+
     for c in results.get("children"):
         title = c.get("data").get("title").lower().split()
         for word in word_list:
