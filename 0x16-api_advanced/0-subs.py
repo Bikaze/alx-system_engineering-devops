@@ -1,22 +1,16 @@
 #!/usr/bin/python3
-"""This is a function that gets the number of subscribers on a given
-Subreddit"""
+"""Function to query subscribers on a given Reddit subreddit."""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """returns the number of subscribers"""
+    """Return the total number of subscribers on a given subreddit."""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {
-        "User-Agent": "redditdev scraper by u/bikaze"
+        "User-Agent": "api advanced /u/bikaze"
     }
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        response.raise_for_status()  # Raise an exception
-        results = response.json().get("data")
-        if not results:
-            return 0
-        return results.get("subscribers")
-    except requests.exceptions.RequestException as e:
-        # Handle various exceptions that can occur during the request
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 404:
         return 0
+    results = response.json().get("data")
+    return results.get("subscribers")
