@@ -19,3 +19,7 @@
 <p align="center">
     <img src="./img/burglar.gif" alt="burglar gif">
 </p>
+
+**Acknowledgement**
+checkout this blog post:
+https://gbeminiyi.hashnode.dev/installing-certbot-in-your-haproxy-load-balancer-server
